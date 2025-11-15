@@ -1,5 +1,5 @@
 import { Application } from 'express';
-import { welcomeRouter } from '../modules/welcome/route/welcome.routes';
+import { welcomeRouter } from '../modules/welcome/welcome.routes';
 
 export function registerRoutes(app: Application) {
     app.use('/api/v1/welcome', welcomeRouter);

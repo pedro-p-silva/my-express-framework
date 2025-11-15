@@ -1,4 +1,4 @@
-import { WelcomeResponseDto } from "../dto/welcome-response.dto";
+import { WelcomeResponseDto } from '../dto/welcome-response.dto';
 
 export class WelcomeService {
     getWelcomeMessage(): WelcomeResponseDto {
