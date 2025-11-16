@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { env } from '../config/env';
 import path from "path";
+import {ENTITIES} from "./entities";
 
 export const AppDataSource = new DataSource({
     type: env.DB_TYPE as any,
@@ -10,11 +11,9 @@ export const AppDataSource = new DataSource({
     username: env.DB_USER,
     password: env.DB_PASS,
     database: env.DB_NAME,
-    synchronize: false,
+    synchronize: true,
     logging: false,
-    entities: [
-        path.join(__dirname, "..", "modules", "**", "entities", "*.{ts,js}")
-    ],
+    entities: ENTITIES,
     migrations: [
         path.join(__dirname, "migrations", "*.{ts,js}")
     ],

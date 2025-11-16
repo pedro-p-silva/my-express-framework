@@ -9,15 +9,9 @@ export const userRouter = Router();
 
 const controller = new UserController(new UserService());
 
-userRouter.get(
-  '/',
-  userGuard,
-  userInterceptor,
-  controller.index.bind(controller)
+userRouter.post(
+    "/",
+    userGuard,
+    userInterceptor,
+    controller.create.bind(controller)
 );
-
-userRouter.get("/test-db", async (_req, res) => {
-    const db = await DatabaseModule.getConnection();
-    const ent = db.entityMetadatas.map((e) => e.name);
-    res.json({ entities: ent });
-});

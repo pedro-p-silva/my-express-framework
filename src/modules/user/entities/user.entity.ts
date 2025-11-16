@@ -1,8 +1,11 @@
-import { Entity, Column } from "typeorm";
-import { BaseModel } from "../../shared/base.model";
+import {Entity, Column, PrimaryGeneratedColumn} from "typeorm";
+import {AuditModel} from "../../../database/audit.model";
 
 @Entity("users")
-export class UserEntity extends BaseModel {
+export class UserEntity {
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
+
     @Column()
     name: string;
 
@@ -11,4 +14,7 @@ export class UserEntity extends BaseModel {
 
     @Column()
     password: string;
+
+    @Column(() => AuditModel, {prefix: false})
+    AuditModel;
 }
